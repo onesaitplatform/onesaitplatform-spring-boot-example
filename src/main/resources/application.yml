@@ -1,0 +1,7 @@
+server: ## Config Web Server
+   port: 8080
+   servlet.contextPath: /spring-boot-demo
+spring:
+   data:
+     mongodb:
+        uri: mongodb://localhost:27017/onesaitplatform_rtdb
