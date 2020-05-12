@@ -29,8 +29,8 @@ public class SwaggerConfig {
 	private static final String LICENSE_URL = "http://www.apache.org/licenses/LICENSE-2.0.html";
 
 	private static final String CONTACT_NAME = "onesait Platform Team";
-	private static final String CONTACT_URL = "https://www.sofia4cities.com";
-	private static final String CONTACT_EMAIL = "select4citiesminsait@gmail.com";
+	private static final String CONTACT_URL = "https://lab.onesaitplatform.com";
+	private static final String CONTACT_EMAIL = "support@onesaitplatform.com";
 
 	private static final String REST_BASE_PACKAGE = "com.minsait.onesait.platform.spring.boot.demo.rest";
 	private static final String APP_JSON = "application/json";
