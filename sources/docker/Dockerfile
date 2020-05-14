@@ -21,7 +21,7 @@ RUN  chown -R user:user /var/log && \
      chmod -R 777 ./target
 	 
 	 
-VOLUME ["/var/log/platform-logs"]
+VOLUME ["/var/log"]
 
 
 USER user

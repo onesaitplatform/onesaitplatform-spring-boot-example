@@ -9,4 +9,11 @@ spring:
 
 openplatform.api:
    baseurl: https://${ONESAIT_SERVERNAME}
-  
+
+## LOGGING CONF
+logging:
+   path: /var/log 
+   file: ${spring.application.name}
+   level:
+      com.minsait: DEBUG 
+      org.springframework.security: INFO
