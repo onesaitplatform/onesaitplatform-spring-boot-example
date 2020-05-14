@@ -33,7 +33,7 @@ ENV JAVA_OPTS="$JAVA_OPTS -Xms1G -Xmx3G" \
 	ONESAIT_SERVERNAME=development.onesaitplatform.com \
 	PORT=8080 \
 	CONTEXT_PATH=/spring-boot-demo \
-	MONGO_SERVER= mongodb-demo \
+	MONGO_SERVER=mongodb-demo \
 	MONGO_DB=spring_boot_demo
 	
 	
