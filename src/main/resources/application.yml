@@ -2,6 +2,42 @@ server: ## Config Web Server
    port: 8080
    servlet.contextPath: /spring-boot-demo
 spring:
+   main.allow-bean-definition-overriding: true
    data:
      mongodb:
         uri: mongodb://localhost:27017/onesaitplatform_rtdb
+   mail:
+     host: in-v3.mailjet.com
+     port: 587
+     username: 9b48afed94c4fe6e368c84b343b9e954
+     password: 6a99068815def326c15de7c6db1496c9
+     properties:
+        mail:
+          debug: true
+          smtp:
+            auth: false
+            starttls.enable: false
+            starttls.required: false
+            timeout: 6000
+            connectiontimeout: 6000
+            writetimeout: 6000
+            
+onesaitplatform.mail-from: online@onesaitplatform.com
+##TWILIO CONFIG
+twilio:
+   account-sid: ACab39235cf50cba5d168a43bb3d8d9d85
+   auth-token: d2c371f87e8dcf8bbd351986477de9cd
+   phone-number: +18302713520
+
+
+openplatform.api:
+   baseurl: https://development.onesaitplatform.com
+   auth:
+    login.path: /oauth-server/oauth/token
+    token:
+      verify.path: /oauth-server/openplatform-oauth/check_token
+      grant_type: password
+      scope: openid
+      clientId: onesaitplatform
+      password: onesaitplatform
+      vertical: onesaitplatform #only change this parameter if using multitenant platform and different vertical

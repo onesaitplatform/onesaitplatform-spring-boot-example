@@ -6,12 +6,16 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Document(collection = "Message")
 @Getter
 @Setter
+@JsonInclude(Include.NON_NULL)
 public class Message {
 
 	public enum MessageType {
@@ -38,5 +42,5 @@ public class Message {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date sentDate;
 
-	private String errorOnSending;
+	private String errorOnSent;
 }

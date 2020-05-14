@@ -11,9 +11,12 @@ import org.springframework.context.annotation.Configuration;
 import com.google.common.collect.Sets;
 
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.schema.ModelRef;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
+import springfox.documentation.service.Parameter;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -36,6 +39,9 @@ public class SwaggerConfig {
 	private static final String APP_JSON = "application/json";
 	private static final String TEXT_PL = "text/plain";
 	private static final String APP_YAML = "application/yaml";
+	private static final String HEADER_STR = "header";
+	private static final String STRING_STR = "string";
+	private static final String AUTH_STR = "Authorization";
 
 	@Bean
 	public ApiInfo apiInfo() {
@@ -50,6 +56,21 @@ public class SwaggerConfig {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.produces(new HashSet<>(Arrays.asList(APP_JSON, TEXT_PL, APP_YAML))).groupName("Messaging").select()
 				.apis(RequestHandlerSelectors.basePackage(REST_BASE_PACKAGE)).paths(regex("/api/messages.*")).build()
-				.protocols(Sets.newHashSet("http", "https"));
+				.globalOperationParameters(Arrays.asList(authHeader())).protocols(Sets.newHashSet("http", "https"));
 	}
+
+	private Parameter authHeader() {
+		final ParameterBuilder pb = new ParameterBuilder();
+		return pb.name(AUTH_STR).modelRef(new ModelRef(STRING_STR)).parameterType(HEADER_STR).required(true).build();
+	}
+
+	@Bean
+	public Docket loginAPI() {
+
+		return new Docket(DocumentationType.SWAGGER_2)
+				.produces(new HashSet<>(Arrays.asList(APP_JSON, TEXT_PL, APP_YAML))).groupName("Authentication")
+				.select().apis(RequestHandlerSelectors.basePackage(REST_BASE_PACKAGE)).paths(regex("/api/login.*"))
+				.build().protocols(Sets.newHashSet("http", "https"));
+	}
+
 }
