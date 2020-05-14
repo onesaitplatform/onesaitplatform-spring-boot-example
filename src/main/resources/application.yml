@@ -1,6 +1,11 @@
 server: ## Config Web Server
    port: 8080
    servlet.contextPath: /spring-boot-demo
+   
+
+
+jasypt.encryptor.bean: encryptorBean
+
 spring:
    main.allow-bean-definition-overriding: true
    data:
@@ -9,8 +14,8 @@ spring:
    mail:
      host: in-v3.mailjet.com
      port: 587
-     username: 9b48afed94c4fe6e368c84b343b9e954
-     password: 6a99068815def326c15de7c6db1496c9
+     username: ENC(im/F0Rc6kwY5msurlH8g3uhE1vhJVTlBKWs/PoM6ZUMxMPNTAN/lB77qmqNrdL9Q)
+     password: ENC(ZwlBgTTbTy9FZXqFyEOZVYYYS3rJVYGUyXrHN91wJFWy6rWy935+usFl+9oNR6pM)
      properties:
         mail:
           debug: true
@@ -22,11 +27,13 @@ spring:
             connectiontimeout: 6000
             writetimeout: 6000
             
-onesaitplatform.mail-from: online@onesaitplatform.com
+onesaitplatform:
+   mail-from: online@onesaitplatform.com
+   jasypt.phrase: 0n3sa1tP1atf0rm
 ##TWILIO CONFIG
 twilio:
-   account-sid: ACab39235cf50cba5d168a43bb3d8d9d85
-   auth-token: d2c371f87e8dcf8bbd351986477de9cd
+   account-sid: ENC(IC/C8vq6vNU8WcE9ergz1T1zpfAYuEuVfiXvVichZNMe/VZI0Kn9tuV8ZTPJvHbm)
+   auth-token: ENC(BbgyMpPxifR+bTCgB9F7lZz9EgJHjKGUy7SDSmCt81vW5qezD0muWRXEzyIP83Oh)
    phone-number: +18302713520
 
 
