@@ -7,6 +7,7 @@ server: ## Config Web Server
 jasypt.encryptor.bean: encryptorBean
 
 spring:
+   application.name: spring-boot-demo
    main.allow-bean-definition-overriding: true
    data:
      mongodb:
