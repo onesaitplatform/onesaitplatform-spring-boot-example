@@ -1,0 +1,12 @@
+server: ## Config Web Server
+   port: ${PORT}
+   servlet.contextPath: ${CONTEXT_PATH}
+spring:
+   data:
+     mongodb:
+        uri: mongodb://${MONGO_SERVER}:27017/${MONGO_DB}
+   
+
+openplatform.api:
+   baseurl: https://${ONESAIT_SERVERNAME}
+  
