@@ -6,8 +6,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.github.reinert.jjschema.Attributes;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +29,7 @@ public class Message {
 	}
 
 	@Id
+	@Attributes(required = true)
 	private String idMessage;
 
 	private String txtMessage;
@@ -35,11 +38,13 @@ public class Message {
 
 	private String fromMessage;
 
+	@Attributes(required = true)
 	private String toMessage;
 
 	private MessageStatus statusMessage;
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private Date sentDate;
 
 	private String errorOnSent;

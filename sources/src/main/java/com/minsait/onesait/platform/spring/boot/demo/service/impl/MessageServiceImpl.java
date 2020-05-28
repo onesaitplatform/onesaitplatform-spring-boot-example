@@ -7,6 +7,11 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.minsait.onesait.platform.client.NotifierClient;
+import com.minsait.onesait.platform.client.model.Notification;
+import com.minsait.onesait.platform.client.model.Notification.Operation;
 import com.minsait.onesait.platform.spring.boot.demo.dto.StatusAggregationResults;
 import com.minsait.onesait.platform.spring.boot.demo.dto.TypeAggregationResults;
 import com.minsait.onesait.platform.spring.boot.demo.exception.MailException;
@@ -27,6 +32,10 @@ public class MessageServiceImpl implements MessageService {
 	private MailService mailService;
 	@Autowired
 	private SMSService smsService;
+	@Autowired
+	private NotifierClient notifierClient;
+
+	private final ObjectMapper mapper = new ObjectMapper();
 
 	@Autowired
 	private MessageRepository messageRepository;
@@ -58,7 +67,23 @@ public class MessageServiceImpl implements MessageService {
 		if (message.getIdMessage() == null) {
 			message.setIdMessage(UUID.randomUUID().toString());
 		}
+
+		// validate Schema
+		notifierClient.validateSchema(message);
+
 		messageRepository.save(message);
+
+		// notify platform
+		String json = null;
+		try {
+			json = mapper.writeValueAsString(message);
+		} catch (final JsonProcessingException e) {
+			log.error("Invalid Json");
+			throw new RuntimeException();
+		}
+		notifierClient.notifyAsync(Notification.builder().ontology("Message").id(message.getIdMessage())
+				.operation(Operation.INSERT).payload(json).build());
+
 		if (Message.MessageType.MAIL.equals(message.getTypeMessage())) {
 			try {
 				mailService.sendMail(message.getToMessage(), message.getTxtMessage());
