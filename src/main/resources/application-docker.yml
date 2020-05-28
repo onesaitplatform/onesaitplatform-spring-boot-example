@@ -1,0 +1,19 @@
+server: ## Config Web Server
+   port: ${PORT}
+   servlet.contextPath: ${CONTEXT_PATH}
+spring:
+   data:
+     mongodb:
+        uri: mongodb://${MONGO_SERVER}:27017/${MONGO_DB}
+   
+
+openplatform.api:
+   baseurl: https://${ONESAIT_SERVERNAME}
+
+## LOGGING CONF
+logging:
+   path: /var/log 
+   file: ${spring.application.name}
+   level:
+      com.minsait: DEBUG 
+      org.springframework.security: INFO
