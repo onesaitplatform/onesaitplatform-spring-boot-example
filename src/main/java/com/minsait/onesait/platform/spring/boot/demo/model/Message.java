@@ -8,6 +8,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.github.reinert.jjschema.Attributes;
+import com.minsait.onesait.platform.client.springboot.aspect.notifier.OPEntity;
+import com.minsait.onesait.platform.client.springboot.aspect.notifier.OPValidateSchema;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +19,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonInclude(Include.NON_NULL)
+@OPEntity
+//@OPValidateSchema
 public class Message {
 
 	public enum MessageType {
@@ -27,6 +32,7 @@ public class Message {
 	}
 
 	@Id
+	@Attributes(required = true)
 	private String idMessage;
 
 	private String txtMessage;

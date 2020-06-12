@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Primary;
 import com.minsait.onesait.platform.client.NotifierClient;
 import com.minsait.onesait.platform.spring.boot.demo.model.Message;
 
-@Configuration
+//@Configuration
 public class NotifierClientConfig {
 
 	private static final String USER = "developer";

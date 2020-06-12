@@ -31,12 +31,26 @@ spring:
 onesaitplatform:
    mail-from: online@onesaitplatform.com
    jasypt.phrase: 0n3sa1tP1atf0rm
+   notifierclient:
+    enabled: true
+    server: https://development.onesaitplatform.com
+    username: developer
+    password: Changed2019!  
+    #apikey:
+   iotclient:  
+    token:
+    deviceTemplate:
+    device:
+
+logging:
+  level:
+    org.springframework.data.mongodb.core.MongoTemplate: DEBUG
+        
 ##TWILIO CONFIG
 twilio:
    account-sid: ENC(IC/C8vq6vNU8WcE9ergz1T1zpfAYuEuVfiXvVichZNMe/VZI0Kn9tuV8ZTPJvHbm)
    auth-token: ENC(BbgyMpPxifR+bTCgB9F7lZz9EgJHjKGUy7SDSmCt81vW5qezD0muWRXEzyIP83Oh)
    phone-number: +18302713520
-
 
 openplatform.api:
    baseurl: https://development.onesaitplatform.com
