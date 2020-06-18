@@ -3,6 +3,7 @@ package com.minsait.onesait.platform.spring.boot.demo.service;
 import java.util.Date;
 import java.util.List;
 
+import com.minsait.onesait.platform.spring.boot.demo.dto.MessageDTO;
 import com.minsait.onesait.platform.spring.boot.demo.dto.StatusAggregationResults;
 import com.minsait.onesait.platform.spring.boot.demo.dto.TypeAggregationResults;
 import com.minsait.onesait.platform.spring.boot.demo.model.Message;
@@ -18,6 +19,10 @@ public interface MessageService {
 	void updateMessage(Message message);
 
 	void createMessage(Message message);
+
+	void createMessage(MessageDTO message);
+
+	void createMessage(String message);
 
 	void deleteMessage(String idMessage);
 

@@ -10,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.github.reinert.jjschema.Attributes;
 import com.minsait.onesait.platform.client.springboot.aspect.notifier.OPEntity;
-import com.minsait.onesait.platform.client.springboot.aspect.notifier.OPValidateSchema;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +19,6 @@ import lombok.Setter;
 @Setter
 @JsonInclude(Include.NON_NULL)
 @OPEntity
-//@OPValidateSchema
 public class Message {
 
 	public enum MessageType {
@@ -39,6 +37,7 @@ public class Message {
 
 	private MessageType typeMessage;
 
+	@Attributes(required = true)
 	private String fromMessage;
 
 	private String toMessage;

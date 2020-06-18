@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.minsait.onesait.platform.spring.boot.demo.dto.MessageDTO;
 import com.minsait.onesait.platform.spring.boot.demo.dto.StatusAggregationResults;
 import com.minsait.onesait.platform.spring.boot.demo.dto.TypeAggregationResults;
 import com.minsait.onesait.platform.spring.boot.demo.model.Message;
@@ -28,7 +29,11 @@ public interface MessageRest {
 
 	@PostMapping
 	@ApiOperation(httpMethod = "POST", value = "New message")
-	public ResponseEntity<String> create(@RequestBody Message message);
+	public ResponseEntity<String> createFromDTO(@RequestBody MessageDTO message);
+
+	@PostMapping("raw")
+	@ApiOperation(httpMethod = "POST", value = "New message")
+	public ResponseEntity<String> createRaw(@RequestBody String message);
 
 	@GetMapping
 	@ApiOperation("Get all messages")

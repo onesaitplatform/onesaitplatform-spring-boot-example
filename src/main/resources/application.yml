@@ -5,9 +5,8 @@ server: ## Config Web Server
 
 
 jasypt.encryptor.bean: encryptorBean
-
+spring.application.name: spring-boot-demo
 spring:
-   application.name: spring-boot-demo
    main.allow-bean-definition-overriding: true
    data:
      mongodb:
@@ -43,6 +42,8 @@ onesaitplatform:
     device:
 
 logging:
+  path: /tmp/logs 
+  file: ${spring.application.name}
   level:
     org.springframework.data.mongodb.core.MongoTemplate: DEBUG
         

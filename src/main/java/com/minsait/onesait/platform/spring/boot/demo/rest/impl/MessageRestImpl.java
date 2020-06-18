@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.minsait.onesait.platform.spring.boot.demo.dto.MessageDTO;
 import com.minsait.onesait.platform.spring.boot.demo.dto.StatusAggregationResults;
 import com.minsait.onesait.platform.spring.boot.demo.dto.TypeAggregationResults;
 import com.minsait.onesait.platform.spring.boot.demo.model.Message;
@@ -22,8 +23,14 @@ public class MessageRestImpl implements MessageRest {
 	private MessageService messageService;
 
 	@Override
-	public ResponseEntity<String> create(Message message) {
+	public ResponseEntity<String> createFromDTO(MessageDTO message) {
 		Assert.notNull(message.getIdMessage(), "Message needs an id");
+		messageService.createMessage(message);
+		return new ResponseEntity<>(HttpStatus.CREATED);
+	}
+
+	@Override
+	public ResponseEntity<String> createRaw(String message) {
 		messageService.createMessage(message);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
