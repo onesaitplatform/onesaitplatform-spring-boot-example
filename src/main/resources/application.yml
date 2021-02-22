@@ -37,9 +37,10 @@ onesaitplatform:
     password: Changed2019!  
     #apikey:
    iotclient:  
-    token:
-    deviceTemplate:
-    device:
+    token: 6efea176dd534850a0452113be00c0a4
+    deviceTemplate: adminclient
+    device: adminclient
+    urlRestIoTBroker: https://development.onesaitplatform.com
 
 logging:
   path: /tmp/logs 
